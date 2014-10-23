@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'rb-inotify'
+require 'ionotify/blink1'
+
+status_file = ARGV[0]
+blink1 = Blink1::Facade.new
+led = Blink1::Facade.new(blink1)
+notifier = INotify::Notifier.new
+
+notifier.watch(status_file, :modify) do
+  led.notify(File.read(status_file))
+end
+
+notifier.run

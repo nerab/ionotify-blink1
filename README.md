@@ -20,12 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    ionb1-rgb R G B
 
-## Contributing
+    ionb1-status {success | failure | *}
 
-1. Fork it ( https://github.com/[my-github-username]/ionotify-blink1/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+    ionb1-watch FILE [*FILES]

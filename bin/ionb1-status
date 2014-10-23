@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'ionotify/blink1'
+include Ionotify::Blink1
+
+Notifier.new(Tool.new).status(ARGV[0])
