@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 
-require 'rb-inotify'
 require 'ionotify/blink1'
+include Ionotify::Blink1
 
-status_file = ARGV[0]
-blink1 = Blink1::Facade.new
-led = Blink1::Facade.new(blink1)
-notifier = INotify::Notifier.new
+blink1 = Notifier.new(Tool.new)
+notifier = FsEventAdapter.new(ARGV)
 
-notifier.watch(status_file, :modify) do
-  led.notify(File.read(status_file))
+notifier.watch do |file|
+  begin
+    blink1.status(File.read(file).chomp)
+  rescue
+    STDERR.puts "Error: #{$!.message}"
+  end
 end
 
 notifier.run
