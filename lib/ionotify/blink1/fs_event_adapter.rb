@@ -8,6 +8,7 @@ end
 
 require 'rb-inotify' if linux?
 require 'rb-fsevent' if mac?
+require 'forwardable'
 
 #
 # Adapted from
@@ -15,6 +16,10 @@ require 'rb-fsevent' if mac?
 #
 class FsEventAdapter
   attr_reader :notifier
+
+  extend Forwardable
+  def_delegators :@notifier, :run, :stop
+
 
   #
   # Accepts the ablosute_path which the notifier
@@ -46,13 +51,5 @@ class FsEventAdapter
         end
       end
     end
-  end
-
-  def run
-    @notifier.run
-  end
-
-  def stop
-    @notifier.stop
   end
 end
