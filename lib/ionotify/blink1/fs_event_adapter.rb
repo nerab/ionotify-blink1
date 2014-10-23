@@ -31,7 +31,6 @@ class FsEventAdapter
   # to be executed when a notifier event occurs
   #
   def watch
-    #proc = lambda { |event| puts "Detected change inside: #{event.class}" } if proc.nil? and not(proc.kind_of?(Proc))
     raise 'Missing block - what should I do if a file changes?' unless block_given?
 
     if linux?
