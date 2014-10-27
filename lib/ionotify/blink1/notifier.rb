@@ -1,5 +1,8 @@
 module Ionotify
   module Blink1
+    #
+    # Translates status messages to colors
+    #
     class Notifier
       def initialize(blink1)
         @blink1 = blink1

@@ -3,8 +3,14 @@
 require 'ionotify/blink1'
 include Ionotify::Blink1
 
-blink1 = Notifier.new(Tool.new)
+led = Tool.new
+blink1 = Notifier.new(led)
 notifier = FsEventAdapter.new(ARGV)
+
+Signal.trap(:INT) do
+  led.off
+  exit
+end
 
 notifier.watch do |file|
   begin
