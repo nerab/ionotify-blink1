@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'ionotify/blink1'
-
-Ionotify::Blink1::Tool.new.rgb(ARGV)

@@ -3,18 +3,17 @@
 require 'ionotify/blink1'
 include Ionotify::Blink1
 
-led = Tool.new
-blink1 = Notifier.new(led)
 notifier = FsEventAdapter.new(ARGV)
 
 Signal.trap(:INT) do
-  led.off
+  Ionotify::Blink1::Off.new.call
   exit
 end
 
 notifier.watch do |file|
   begin
-    blink1.status(File.read(file).chomp)
+    status = File.read(file).chomp
+    puts Ionotify::Blink1::PatternFactory.new.produce(status).call
   rescue
     STDERR.puts "Error: #{$!.message}"
   end

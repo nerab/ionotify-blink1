@@ -1,6 +1,8 @@
-# Ionotify::Blink1
+# ionotify::blink1
 
-TODO: Write a gem description
+Changes the blink1 color when a file changes.
+
+Notification tool that changes the color of a blink1 when a watched file changes its contents.
 
 ## Installation
 
@@ -20,8 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
-    ionb1-rgb R G B
+    ionb1-show RGB 128 64 12
 
-    ionb1-status {success | failure | *}
+    ionb1-pattern {success | pending | failed}
 
     ionb1-watch FILE [*FILES]

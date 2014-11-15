@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nerab@gmx.at"]
   spec.summary       = %q{Changes the blink1 color when a file changes}
   spec.description   = %q{Notification tool that changes the color of a blink1 when a watched file changes its contents.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/nerab/ionotify-blink1"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

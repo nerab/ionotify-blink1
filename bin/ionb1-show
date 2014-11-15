@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'ionotify/blink1'
+
+Signal.trap(:INT) do
+  Ionotify::Blink1::Off.new.call
+  exit
+end
+
+puts Ionotify::Blink1.const_get(ARGV.shift).new(*ARGV).call
